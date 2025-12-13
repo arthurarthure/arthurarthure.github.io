@@ -5,11 +5,19 @@
     padding: 0;
     text-decoration: none;
     color: #383838;
+    gap: 1.25rem;
+    font-size: 12px;
+    letter-spacing: 2px;
+    word-spacing: 2px;
 }
 
 a {
     text-decoration: none;
     color: inherit;
+}
+
+video {
+    pointer-events: none; 
 }
 
 body {
@@ -48,10 +56,6 @@ body {
     list-style: none;
     display: flex;
     justify-content: flex-start;
-    gap: 1.25rem;
-    font-size: 12px;
-    letter-spacing: 2px;
-    word-spacing: 2px;
 }
 
 .Nav-left .main-menu,
@@ -68,15 +72,14 @@ body {
 .Nav-left .main-menu:hover,
 .Nav-left .custom-item:hover {
     color: #7e7e7e;
+    scale: 0.95 ease-in-out;
     transition: 0.3s;
 }
 
 .dropdown:hover .dropdown-menu { display: block; }
 
 .Logo {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    margin: 0 auto;
     text-align: center;
 }
 
@@ -126,31 +129,6 @@ body {
 }
 
 
-@media (max-width: 768px) {
-    .Logo {
-        position: static;
-        transform: none;
-        width: 100%;
-        margin-bottom: 0 auto;
-    }
-
-    .Nav-links {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .Nav-left {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    .Nav-right {
-        width: 100%;
-        justify-content: center;
-        margin-top: 0.5rem;
-    }
-}
-
 .dropdown {
     position: relative;
 }
@@ -159,14 +137,16 @@ body {
     position: absolute;
     top: 100%;
     left: 0;
-    background: white;
+    background: rgb(255, 255, 255);
     list-style: none;
     padding: 20px 25px; 
-    width: 200px; 
+    width: auto; 
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(-10px);
     pointer-events: none;
     border: none;
+    border-radius: 2px;
+    box-shadow: 2 0 26px rgba(82, 82, 82, 0.15);
     transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
@@ -174,14 +154,19 @@ body {
     margin: 10px 0;
 }
 
+
 .dropdown-menu li a {
     display: block;
     font-size: 12px;
     letter-spacing: 2px;
     color: black;
 }
-
-.dropdown:hover .dropdown-menu {
+.dropdown-menu li a:hover {
+    color: #7e7e7e;
+    scale: (0.95) ease-in-out;
+    transition: 0.3s;
+}
+.dropdown:hover .dropdown-menu  {
     opacity: 1;
     transform: translateY(0px);
     pointer-events: auto;
@@ -198,31 +183,93 @@ body {
     cursor: pointer;
     padding: 8px;;
 }
-@media (max-width:768px) {
-    .Hamburger {
-        display: block;
-        position: absolute;
-        left: 20px;
+
+@media (max-width: 768px) {
+    .Nav-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        position: fixed;      /* fixera menyn */
+        top: 0;
+        left: -250px;         /* start utanför skärmen */
+        width: 250px;
+        height: 100vh;
+        background-color: white;
+        padding-top: 80px;
+        transition: left 0.3s ease; /* slide-animation */
+        z-index: 1000;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.1);
     }
 
-    .Nav-left, .Nav-right {
+    .mobile-open {
+        left: 0;              /* dra ut menyn */
+    }
+
+    /* Visa länkar utan display: none */
+
+    .Nav-right {
         display: none;
     }
 
-    .mobile-open .Nav-left,
-    .mobile-open .Nav-right {
-        display: flex;
+    .Nav-left {
         flex-direction: column;
-        gap: 1rem;
         width: 100%;
-        align-items: center;
-        margin-top: 1rem;
+        gap: 1rem;
+        padding: 0 20px;
     }
 
-    
-    .Logo {
-        position: static;
-        transform: none;
-        margin: 0 auto;
+    .Hamburger {
+        display: block;
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        z-index: 1100;
     }
+
+    .Logo {
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        z-index: 1500;
+    }
+
+    /* Dropdown i sidebar */
+    
 }
+/* End of Nav styling */
+
+.Window {
+    width: 100%;
+    height:400px;
+    background-color: rgb(87, 87, 87);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.glass {
+    position: relative;
+    background: linear-gradient(45deg, #e0f7fa, #ffffff);
+    width: 80px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.glass::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, #e0f7fa, #858585);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+
+    pointer-events: none;
+}
+
+.glass:hover::before {
+    opacity: 1;
+}
+
+
