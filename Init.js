@@ -50,3 +50,12 @@ header [0].innerHTML = `<nav class="Nav-bar">
     </ul>
 </nav>`
 
+let footer = document.getElementsByTagName("footer");
+footer [0].innerHTML = `<ul>
+            <li><a href="About.html">ABOUT</a></li>
+            <li><a href="Contact.html">CONTACT</a></li>
+            <li><a href="Privacy.html">PRIVACY POLICY</a></li>
+            <li><a href="Terms.html">TERMS OF SERVICE</a></li>
+        </ul>
+
+        <h1>Kuro Atelier © 2026</h1>`
