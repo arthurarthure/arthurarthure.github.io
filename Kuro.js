@@ -1,23 +1,22 @@
-document.addEventListener("DOMContentLoaded", () => { 
-    // Mobile nav
+document.addEventListener("DOMContentLoaded", () => {
+
+    // Burger menu
     const nav = document.querySelector('.Nav-bar');
     const burger = document.querySelector('.hamburger-btn');
+
+    burger?.addEventListener('click', () => {
+        nav.classList.toggle('mobile-open');
+    });
+
+    // Dropdown menu (mobile)
     const dropdown = document.querySelector('.dropdown');
 
-    if (burger) {
-        burger.addEventListener('click', () => {
-            nav.classList.toggle('mobile-open');
-        });
-    }
-
-    if (dropdown) {
-        dropdown.addEventListener("click", (e) => {
-            if (window.innerWidth <= 768) {
-                e.preventDefault();
-                dropdown.classList.toggle("open");
-            }
-        });
-    }
+    dropdown?.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+            e.preventDefault();
+            dropdown.classList.toggle('open');
+        }
+    });
 
     // Horizontal scroll buttons
     const container = document.querySelector('.window-3-inner');
@@ -33,4 +32,5 @@ document.addEventListener("DOMContentLoaded", () => {
             container.scrollBy({ left: 200, behavior: 'smooth' });
         });
     }
+
 });

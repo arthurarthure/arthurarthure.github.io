@@ -149,7 +149,7 @@ body {
     background: rgb(255, 255, 255);
     list-style: none;
     padding: 20px 25px; 
-    width: auto; 
+    width: 150px; 
     opacity: 0;
     transform: translateY(-10px);
     pointer-events: none;
@@ -197,23 +197,23 @@ body {
     .Nav-bar {
         flex-direction: column;
         align-items: flex-start;
-        position: fixed;      /* fixera menyn */
+        position: fixed;      
         top: 0;
-        left: -250px;         /* start utanför skärmen */
+        left: -250px;        
         width: 250px;
         height: 100vh;
         background-color: white;
         padding-top: 80px;
-        transition: left 0.3s ease; /* slide-animation */
+        transition: left 0.3s ease;
         z-index: 1000;
         box-shadow: 2px 0 5px rgba(0,0,0,0.1);
     }
 
     .mobile-open {
-        left: 0;              /* dra ut menyn */
+        left: 0;              
     }
 
-    /* Visa länkar utan display: none */
+  
 
     .Nav-right {
         display: none;
@@ -241,16 +241,24 @@ body {
         z-index: 1500;
     }
 
-    /* Dropdown i sidebar */
     
 }
 /* End of Nav styling */
+
+
+
+
+/* ----------Main styling---------- */
 
 main {
     min-height: 100vh;
     width: 100%;
 
 }
+
+
+
+/*  Window-1 Desktop Layout  */
 
 .Window {
     width: 100%;
@@ -301,6 +309,10 @@ main {
     opacity: 1;
 }
 
+
+
+/*  Window-2 Desktop Layout  */
+
 .Window-2 {
     width: 100%;
     height:600px;
@@ -328,31 +340,33 @@ main {
 }
 
 
-/* ---------- Window-3 Desktop Layout ---------- */
+
+/*  Window-3 Desktop Layout  */
+
 .Window-3 {
     width: 100%;
-    height: 400px;                   /* original desktop height */
+    height: 400px;                  
     background-color: rgb(224, 224, 224);
     display: flex;
-    justify-content: space-evenly;    /* evenly space parents */
+    justify-content: space-evenly;  
     align-items: center;
     gap: 20px;
     padding: 0 20px;
     box-sizing: border-box;
-    position: relative;               /* needed for arrow buttons */
+    position: relative;               
 }
 
 .window-3-inner {
     display: flex;
-    overflow-x: auto;                 /* enable horizontal scroll */
-    scroll-behavior: smooth;          /* smooth scrolling */
+    overflow-x: auto;                 
+    scroll-behavior: smooth;         
     height: 100%;
     gap: 20px;
 }
 
 .parent-2 {
-    flex: 1;                          /* grow to fill space */
-    max-width: 180px;                 /* optional cap */
+    flex: 1;                          
+    max-width: 180px;                 
     height: 100%;
     background-color: rgb(188, 235, 255);
     display: flex;
@@ -364,16 +378,14 @@ main {
 
 .child-2 {
     width: 100%;
-    aspect-ratio: 1 / 1;              /* square */
+    aspect-ratio: 1 / 1;             
     background-color: rgb(170, 170, 170);
     margin-bottom: 10px;
 }
 
-/* ---------- Scroll Buttons (default hidden) ---------- */
-/* ---------- Scroll Buttons (default hidden) ---------- */
 .scroll-btn {
-    display: none;                   /* hidden by default */
-    position: absolute;              /* relative to Window-3 */
+    display: none;                  
+    position: absolute;            
     top: 50%;
     width: 32px;
     height: 32px;
@@ -384,30 +396,42 @@ main {
     cursor: pointer;
     z-index: 10;
     transition: background 0.2s ease, transform 0.2s ease;
-}
+    }
 
-
-.scroll-btn i {
+    .scroll-btn i {
     font-size: 18px;
     color: rgb(0, 0, 0);
-}
+    display:none;
+    }
 
-.scroll-btn i:hover {
+    .scroll-btn i:hover {
     color: rgb(255, 0, 0);
-}
+    }
+    .scroll-btn.left { 
+    left: 5px;
+    display:none; 
+    }
+    .scroll-btn.right { 
+    right: 5px; 
+    display:none;  
 
-.scroll-btn.left { left: 5px; }
-.scroll-btn.right { right: 5px; }
+    }
+
+
+
+
+
+
 
 /* ---------- Mobile Layout (≤768px) ---------- */
 @media (max-width: 768px) {
     .Window-3 {
         flex-wrap: nowrap;
-        overflow-x: hidden;            /* hide native scroll */
+        overflow-x: hidden;            
         height: 250px;
         gap: 15px;
         padding: 0 10px;
-        position: relative;            /* make sure arrows are inside Window-3 */
+        position: relative;           
     }
 
     .parent-2 {
@@ -424,5 +448,36 @@ main {
     /* Show arrows only in mobile */
     .scroll-btn {
         display: flex;
+    }
+
+    .scroll-btn {                
+    position: absolute;            
+    top: 50%;
+    width: 32px;
+    height: 32px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+
+    .scroll-btn i {
+    font-size: 18px;
+    color: rgb(0, 0, 0);
+    }
+
+    .scroll-btn i:hover {
+    color: rgb(255, 0, 0);
+    }
+    .scroll-btn.left { 
+    left: 5px; 
+    }
+    .scroll-btn.right { 
+    right: 5px;   
+
     }
 }
