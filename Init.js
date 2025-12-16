@@ -11,13 +11,13 @@ header [0].innerHTML = `<nav class="Nav-bar">
                 </a>
 
                 <ul class="dropdown-menu">
-                    <li><a href="Kuro.html">HOME</a></li>
+                    <li><a href="index.html">HOME</a></li>
                     <li><a href="#">SHOES</a></li>
                     <li><a href="#">SUPPORT</a></li>
                     <li><a href="#">CONTACTS</a></li>
                 </ul>
             </div>
-            <div class="nav-item"><a class="custom-item" href="Kuro.html"><i class="uil uil-home-alt"></i></a></div>
+            <div class="nav-item"><a class="custom-item" href="index.html"><i class="uil uil-home-alt"></i></a></div>
             <div class="nav-item"><a class="custom-item" href="Women.html">SHOP WOMEN</a></div>
             <div class="nav-item"><a class="custom-item" href="Men.html">SHOP MEN</a></div>
             <div class="nav-item"><a class="custom-item" href="Arrival.html">CURRENT ARRIVALS</a></div>
@@ -32,7 +32,7 @@ header [0].innerHTML = `<nav class="Nav-bar">
 
         
         <li class="Logo">
-            <a href="Kuro.html">
+            <a href="index.html">
                 <div class="Logo-img"></div>
             </a>
         </li>
