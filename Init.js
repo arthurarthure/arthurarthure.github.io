@@ -12,7 +12,12 @@ header [0].innerHTML = `<nav class="Nav-bar">
 
                 <ul class="dropdown-menu">
                     <li><a href="index.html">HOME</a></li>
+                    <hr style="border-top: 1px solid #ccc; width: 90px; margin: 5px 0;">
+                    <li><a href="#">JACKETS</a></li>
+                    <li><a href="#">TOPS</a></li>
+                    <li><a href="#">PANTS</a></li>
                     <li><a href="#">SHOES</a></li>
+                    <li><a href="#">BELTS</a></li>
                     <li><a href="#">SUPPORT</a></li>
                     <li><a href="#">CONTACTS</a></li>
                 </ul>
