@@ -361,6 +361,7 @@ main {
     width: 100%;
     height:600px;
     background-color: rgb(133, 133, 133);
+    margin:0;
 }
 
 .parent {
@@ -417,7 +418,7 @@ main {
 @media (max-width:768px) {
     .Window-2 {
     width: 100%;
-    height:300px;
+    height:250px;
     background-color: rgb(133, 133, 133);
     }
 
@@ -562,7 +563,8 @@ main {
     height: 100%;
     overflow: hidden;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -584,6 +586,24 @@ main {
 
     overflow: hidden;
 
+}
+
+@media (max-width: 768px) {
+    .arrival-content {
+        flex-direction: column;
+        height: auto; 
+    }
+
+    .A-Twin-1, .A-Twin-2 {
+        width: 100%;
+        height: auto; 
+    }
+
+    .A-Twin-1 {
+        grid-template-columns: 1fr 1fr; 
+        grid-template-rows: repeat(4, 1fr); 
+    }
+    
 }
 
 
