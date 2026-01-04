@@ -436,36 +436,40 @@ main {
 
 .Window-3 {
     width: 100%;
-    height: 400px;                  
+    min-height: 480px;
+    height: auto;
     background-color: rgb(255, 255, 255);
     display: flex;
-    justify-content: space-evenly;  
+    justify-content: space-evenly;
     align-items: center;
-    gap: 20px;
-    padding: 0 20px;
+    gap: 28px;
+    padding: 20px 24px;
     box-sizing: border-box;
-    position: relative;               
+    position: relative;
 }
 
 .window-3-inner {
     display: flex;
-    overflow-x: auto;                 
-    scroll-behavior: smooth;         
+    overflow-x: auto;
+    scroll-behavior: smooth;
     height: 100%;
-    gap: 20px;
-}
+    gap: 24px;
+} 
+
 
 .parent-2 {
-    flex: 1;                          
-    width: 300px;                 
-    height: 50%;
-    background-color: rgb(188, 235, 255);
+    /* responsive fixed-width cards that scale with viewport */
+    flex: 0 0 clamp(220px, 22vw, 420px);
+    width: auto;
+    background-color: transparent;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-}
+    gap: 12px;
+    padding: 10px;
+} 
 
 .parent-2:hover {
     color: rgb(255, 0, 0);
@@ -475,8 +479,30 @@ main {
 .child-2 {
     width: 100%;
     aspect-ratio: 1 / 1;             
-    background-color: rgb(170, 170, 170);
+    background-color: transparent;
     margin-bottom: 10px;
+    position: relative; /* contain absolutely-positioned or overflowing images */
+    overflow: hidden;   /* hide any overflow when using object-fit */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    transition: ease-out 0.3s;
+}
+
+/* Ensure any img placed inside the square fits and keeps its aspect ratio */
+.child-2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;    /* use `contain` instead of `cover` to avoid cropping */
+    object-position: 50% 70%;
+    display: block;
+}
+
+/* Optional utility: if you want some images fully visible without cropping, add `.contain` to the img */
+.child-2 img.contain {
+    object-fit: contain;
+    background: #fff; /* visual padding when using contain */
 }
 
 .child-2:hover {
@@ -541,9 +567,9 @@ main {
 .arrival-content {
     width: 100%;
     height: 800px;                  
-    background-color: rgb(46, 189, 82);
+    background-color: rgb(208, 214, 165);
     display: flex;
-    border-top: 20px solid rgb(255, 0, 0);
+    border-top: 20px solid rgb(129, 129, 129);
 }
 
 .A-Twin-1 {
@@ -562,21 +588,57 @@ main {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+    position: relative; /* for overlay positioning */
+    display: block;
 }
 
 .A-Child img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition: transform 0.35s ease, filter 0.35s ease;
+    display: block;
 }
 
-.A-Child img:hover{
-    transform: scale(1.1);
+.A-Child .info-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    text-align: center;
+    color: #fff;
+    opacity: 0;
+    transform: translateY(6%);
+    transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s ease;
+    pointer-events: none;
+}
+
+.A-Child .info-overlay h1 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+}
+
+.A-Child .info-overlay p {
+    font-size: 12px;
+    opacity: 0.95;
+}
+
+/* On hover: dim the image and show the overlay */
+.A-Child:hover img {
+    transform: scale(1.03);
+    filter: brightness(0.45);
+}
+
+.A-Child:hover .info-overlay {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    background: rgba(255, 255, 255, 0.45);
 }
 
 .A-Twin-2 {
@@ -623,9 +685,9 @@ main {
 
     .parent-2 {
         flex: 0 0 80%;
-        min-width: 150px;
-        max-width: 175px;
-        height: 75%;
+        min-width: 180px;
+        max-width: 260px;
+        height: 80%;
     }
 
     .child-2 {
