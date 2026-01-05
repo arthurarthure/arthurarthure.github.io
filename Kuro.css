@@ -307,24 +307,33 @@ main {
     transition: opacity 0.5s ease;
 }
 .Window video:hover {
-    opacity: 0.8;
+    opacity: 0.6;
     transition: opacity 0.25s ease;
     cursor: pointer;
 }
 
-.Window-title {
+.Window-title-1 {
     display:flex;
     font-size: 24px;
     color: rgb(0, 0, 0);
     padding: 18px;
 }
 
-.Window-title:hover {
-    gap: 1.25rem;
-    font-size: 12px;
-    letter-spacing: 2px;
-    word-spacing: 2px;
+
+.Window-title-2 {
+    background: linear-gradient(rgb(100, 100, 100), rgb(255, 255, 255));
+    display:flex;
+    font-size: 24px;
+    color: rgb(255, 255, 255);
+    padding: 18px;
+    height: 80px;
 }
+
+
+
+
+
+
 
 .glass {
     position: relative;
@@ -359,8 +368,8 @@ main {
 
 .Window-2 {
     width: 100%;
-    height:600px;
-    background-color: rgb(133, 133, 133);
+    height:800px;
+    background: linear-gradient(to bottom, white, rgb(133, 133, 133), rgb(100, 100, 100));
     margin:0;
 }
 
@@ -388,6 +397,13 @@ main {
     display: block;
 }
 
+.slideshow {
+    width: 300px;          /* set size */
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+}
+
 .slideshow-track {
     display: flex;
     height: 100%;
@@ -398,12 +414,13 @@ main {
     flex: 0 0 100%;
     width: 100%;
     height: 100%;
-    /* Show the full image without cropping (use contain for 1:1 images)
-       and center it inside the slide */
-    object-fit: contain;
+    object-fit: contain;   /* use cover if you want crop */
     object-position: center;
     background-color: #fff;
 }
+
+
+ 
 
 
 
@@ -413,6 +430,16 @@ main {
     height: 100%;
     background-color: rgb(201, 112, 112);
     display: inline-block;
+}
+
+/* Make images in the twin containers and Arrival twin fill properly */
+.twin-2 img,
+.A-Twin-2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
 }
 
 @media (max-width:768px) {
@@ -438,7 +465,7 @@ main {
     width: 100%;
     min-height: 480px;
     height: auto;
-    background-color: rgb(255, 255, 255);
+    background: linear-gradient(rgb(255, 255, 255), rgb(0, 0, 0));
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -469,6 +496,7 @@ main {
     box-sizing: border-box;
     gap: 12px;
     padding: 10px;
+    color: white;
 } 
 
 .parent-2:hover {
@@ -478,16 +506,42 @@ main {
 
 .child-2 {
     width: 100%;
-    aspect-ratio: 1 / 1;             
-    background-color: transparent;
-    margin-bottom: 10px;
-    position: relative; /* contain absolutely-positioned or overflowing images */
-    overflow: hidden;   /* hide any overflow when using object-fit */
+    aspect-ratio: 1 / 1;
+    position: relative;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 2px;
-    transition: ease-out 0.3s;
+
+    background: linear-gradient(rgb(239, 239, 239), rgb(56, 56, 56));
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* gradient layer */
+.child-2::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        45deg,
+        rgb(180, 180, 180),
+        rgb(30, 30, 30)
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    z-index: 0;
+}
+
+/* hover state */
+.child-2:hover::before {
+    opacity: 1;
+}
+
+/* keep content above gradient */
+.child-2 > * {
+    position: relative;
+    z-index: 1;
 }
 
 /* Ensure any img placed inside the square fits and keeps its aspect ratio */
@@ -505,10 +559,6 @@ main {
     background: #fff; /* visual padding when using contain */
 }
 
-.child-2:hover {
-    background-color: rgb(222, 143, 143);
-    cursor: pointer;
-}
 .scroll-btn {
     display: none;                  
     position: absolute;            
@@ -565,9 +615,9 @@ main {
 }
 
 .arrival-content {
+    background: linear-gradient(rgb(129, 129, 129), rgb(255, 255, 255));
     width: 100%;
     height: 800px;                  
-    background-color: rgb(208, 214, 165);
     display: flex;
     border-top: 20px solid rgb(129, 129, 129);
 }
@@ -575,7 +625,7 @@ main {
 .A-Twin-1 {
     width: 50%;
     height: 100%;
-    background-color: rgb(255, 255, 255);
+    background: linear-gradient(rgb(129, 129, 129), rgb(255, 255, 255));
 
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* 2 columns */
@@ -590,6 +640,7 @@ main {
     overflow: hidden;
     position: relative; /* for overlay positioning */
     display: block;
+    border-radius: 4px;
 }
 
 .A-Child img {
@@ -645,10 +696,35 @@ main {
     width: 50%;
     height: 100%;
     background-color: rgb(79, 141, 169);
-
+    display: flex;
     overflow: hidden;
-
 }
+
+.slideshow {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: block;
+}
+
+.slideshow-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s ease-in-out;
+    align-items: stretch;
+    flex-wrap: nowrap; /* prevent slides wrapping */
+}
+
+.slide {
+    flex: 0 0 100%; /* each slide takes full container width */
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;   /* ensure image fills slide */
+    object-position: center;
+}
+
 
 @media (max-width: 768px) {
     .arrival-content {
@@ -738,10 +814,10 @@ main {
 footer {
     min-height: 80px;
     width: 100%;
-    background: linear-gradient(rgb(255, 255, 255), rgb(126, 126, 126));
+    background-color: #000000;
     text-align: center;
     padding: 20px 0;
-    margin-top: 40px;
+    
     font-size: 12px;
     color: #383838;
     position: relative;
