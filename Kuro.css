@@ -32,7 +32,16 @@ body {
 
     font-family: Arial, sans-serif;
     background-color: hsl(0, 0%, 100%);
+
+      opacity: 0;
+      animation: pageFade 0.6s ease forwards;
     
+}
+
+@keyframes pageFade {
+    to {
+        opacity: 1;
+    }
 }
 
 
@@ -247,12 +256,12 @@ body {
 
     
 }
-/* End of Nav styling */
 
 
 
 
-/* ----------Main styling---------- */
+
+/* Main styling */
 
 main {
     min-height: 100vh;
@@ -266,6 +275,8 @@ main {
     margin: 0;
 
 }
+
+
 
 
 
@@ -398,7 +409,7 @@ main {
 }
 
 .slideshow {
-    width: 300px;          /* set size */
+    width: 300px;     
     height: 300px;
     overflow: hidden;
     position: relative;
@@ -414,7 +425,7 @@ main {
     flex: 0 0 100%;
     width: 100%;
     height: 100%;
-    object-fit: contain;   /* use cover if you want crop */
+    object-fit: contain;   
     object-position: center;
     background-color: #fff;
 }
@@ -432,7 +443,7 @@ main {
     display: inline-block;
 }
 
-/* Make images in the twin containers and Arrival twin fill properly */
+
 .twin-2 img,
 .A-Twin-2 img {
     width: 100%;
@@ -445,7 +456,7 @@ main {
 @media (max-width:768px) {
     .Window-2 {
     width: 100%;
-    height:250px;
+    height:200px;
     background-color: rgb(133, 133, 133);
     }
 
@@ -485,7 +496,7 @@ main {
 
 
 .parent-2 {
-    /* responsive fixed-width cards that scale with viewport */
+ 
     flex: 0 0 clamp(220px, 22vw, 420px);
     width: auto;
     background-color: transparent;
@@ -496,8 +507,14 @@ main {
     box-sizing: border-box;
     gap: 12px;
     padding: 10px;
+    text-decoration: none;
     color: white;
 } 
+
+.parent-2 span {
+    text-align: center;
+    font-size: inherit;
+}
 
 .parent-2:hover {
     color: rgb(255, 0, 0);
@@ -518,7 +535,7 @@ main {
     cursor: pointer;
 }
 
-/* gradient layer */
+
 .child-2::before {
     content: "";
     position: absolute;
@@ -531,32 +548,33 @@ main {
     opacity: 0;
     transition: opacity 0.3s ease-out;
     z-index: 0;
+    pointer-events: none;
 }
 
-/* hover state */
+
 .child-2:hover::before {
     opacity: 1;
 }
 
-/* keep content above gradient */
+
 .child-2 > * {
     position: relative;
     z-index: 1;
 }
 
-/* Ensure any img placed inside the square fits and keeps its aspect ratio */
+
 .child-2 img {
     width: 100%;
     height: 100%;
-    object-fit: cover;    /* use `contain` instead of `cover` to avoid cropping */
+    object-fit: cover;    
     object-position: 50% 70%;
     display: block;
 }
 
-/* Optional utility: if you want some images fully visible without cropping, add `.contain` to the img */
+
 .child-2 img.contain {
     object-fit: contain;
-    background: #fff; /* visual padding when using contain */
+    background: #fff; 
 }
 
 .scroll-btn {
@@ -594,7 +612,7 @@ main {
     }
 
 
-/* ---------- Arrivals Layout ---------- */
+/* Arrivals Layout*/
 .Arrival-Window {
     width: 100%;
     height:200px;
@@ -628,9 +646,9 @@ main {
     background: linear-gradient(rgb(129, 129, 129), rgb(255, 255, 255));
 
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columns */
-    grid-template-rows: repeat(2, 1fr);    /* 2 rows */
-    gap: 10px; /* optional spacing */
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);    
+    gap: 10px; 
 }
 
 .A-Child {
@@ -638,7 +656,7 @@ main {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    position: relative; /* for overlay positioning */
+    position: relative; 
     display: block;
     border-radius: 4px;
 }
@@ -713,15 +731,15 @@ main {
     height: 100%;
     transition: transform 0.6s ease-in-out;
     align-items: stretch;
-    flex-wrap: nowrap; /* prevent slides wrapping */
+    flex-wrap: nowrap; 
 }
 
 .slide {
-    flex: 0 0 100%; /* each slide takes full container width */
+    flex: 0 0 100%;
     width: 100%;
     height: 100%;
     display: block;
-    object-fit: cover;   /* ensure image fills slide */
+    object-fit: cover;   
     object-position: center;
 }
 
@@ -748,7 +766,7 @@ main {
 
 
 
-/* ---------- Mobile Layout (≤768px) ---------- */
+/*  Mobile Layout (≤768px) */
 @media (max-width: 768px) {
     .Window-3 {
         flex-wrap: nowrap;
@@ -771,7 +789,7 @@ main {
         aspect-ratio: 1 / 1;
     }
 
-    /* Show arrows only in mobile */
+    /* Show arrows only in mobile...... that doesnt work for some reaosn */
     .scroll-btn {
         display: flex;
     }
@@ -810,7 +828,7 @@ main {
 
 }
 
-/* ---------- End of Mobile Layout ---------- */
+/*  End of Mobile Layout  */
 footer {
     min-height: 80px;
     width: 100%;
@@ -819,7 +837,7 @@ footer {
     padding: 20px 0;
     
     font-size: 12px;
-    color: #383838;
+    color: #5d5d5d;
     position: relative;
     gap: 1.25rem;
     font-size: 12px;
@@ -837,9 +855,12 @@ footer ul{
 }
 
 footer ul li {
-    border: #000000;
+    border: #787878;
     padding: 2%;
     
+}
+footer ul li a {
+    color: #727272;
 }
 
 footer ul li a:hover {
@@ -852,7 +873,7 @@ footer h1 {
 
     font-style: italic;
     font-size: 10px;
-    color: #4e4e4e;
+    color: #4d2626;
     padding-bottom: 12px;
 }
 
@@ -877,4 +898,294 @@ footer h1 {
     footer ul li {
         padding: 1%;
     }
+}
+
+
+
+/* About page  */
+
+.About-main {
+    background: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255), black);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    min-height: 175vh;
+    width: 100%;
+}
+
+.about-hero {
+    max-width: 900px;
+    text-align: center;
+    padding: 40px 28px;
+    background: transparent;
+    border-radius: 4px;
+    margin-bottom: 24px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+}
+
+.about-hero h1 {
+    font-size: 32px;
+    color: #101010;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.about-hero p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.about-details {
+    max-width: 820px;
+    padding: 28px 26px;
+    background: transparent;
+    border-radius: 4px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+    color: #000000;
+}
+
+.about-details h2 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: #000000;
+}
+
+.about-details ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.about-details li {
+    font-size: 15px;
+    color: #550c0c;
+}
+
+.about-details a {
+    color: #4e1717;
+    border-bottom: 1px dashed rgba(51,51,51,0.3);
+    padding-bottom: 2px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+    
+}
+
+.about-details a:hover {
+    color: #ff0000;
+    border-bottom-color: #ff0000;
+}
+
+
+@media (max-width: 768px) {
+    .About-main {
+        padding: 20px 12px;
+    }
+
+    .about-hero {
+        padding: 22px 18px;
+    }
+
+    .about-hero h1 {
+        font-size: 22px;
+    }
+
+    .about-details {
+        padding: 18px 14px;
+    }
+}
+
+
+
+/*  Product Page Styling */
+
+.product-main {
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(rgb(255, 255, 255), rgb(0, 0, 0));
+  padding: 40px 0;
+}
+.product-wrapper {
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+}
+
+
+.product-image {
+  background: #fff;
+  border-radius: 6px;
+  padding: 40px;
+}
+
+.product-image img {
+  width: 100%;
+  height: 500px;
+  object-fit: contain;
+}
+
+
+.product-info h1 {
+  font-size: 26px;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.price {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+
+.label {
+  font-size: 12px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.size-grid {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.size-grid button {
+  padding: 10px 16px;
+  border: 1px solid #111;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.size-grid button:hover {
+  background: #111;
+  color: #fff;
+}
+
+.size-grid button.active {
+  background: #111;
+  color: #fff;
+}
+
+
+.add-to-cart {
+  padding: 16px;
+  width: 100%;
+  background: #111;
+  color: #fff;
+  border: none;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .product-wrapper {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .product-image {
+    padding: 20px;
+    
+    }
+}
+
+
+
+
+
+
+/*  Product Gallery Styling  */
+
+.product-gallery {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 15px; 
+    margin: 20px auto;
+}
+
+.product-gallery .A-Child {
+    width: 100%;
+    aspect-ratio: 1 / 1; 
+    overflow: hidden;
+    position: relative;
+    border-radius: 4px;
+}
+
+.product-gallery .A-Child img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.product-gallery .A-Child .info-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    text-align: center;
+    color: #fff;
+    opacity: 0;
+    transform: translateY(6%);
+    transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s ease;
+    pointer-events: none;
+}
+
+.product-gallery .A-Child:hover img {
+    transform: scale(1.03);
+    filter: brightness(0.45);
+}
+
+.product-gallery .A-Child:hover .info-overlay {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    background: rgba(255, 255, 255, 0.45);
+}
+
+@media screen and (max-width: 1200px) {
+  .product-gallery {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .product-gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .product-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .product-gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+.category-main {
+    min-height: 100vh;
+    width: 100%;
+    background: linear-gradient(rgb(255, 255, 255), rgb(0, 0, 0));
+    padding: 40px 0;
 }
