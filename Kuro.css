@@ -1186,6 +1186,6 @@ footer h1 {
 .category-main {
     min-height: 100vh;
     width: 100%;
-    background: linear-gradient(rgb(255, 255, 255), rgb(0, 0, 0));
+    background: linear-gradient(rgb(255, 255, 255), rgb(0, 0, 0), white);
     padding: 40px 0;
 }
